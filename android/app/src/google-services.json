@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "542421896944",
+    "project_id": "stockx-project2",
+    "storage_bucket": "stockx-project2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542421896944:android:f4db50006d35681f393c35",
+        "android_client_info": {
+          "package_name": "com.example.stock_app_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2CWWAheq3Whc8G9hPlXpYdXyCeqiu-JE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
