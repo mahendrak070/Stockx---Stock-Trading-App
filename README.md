@@ -1,16 +1,22 @@
-# stock_app_project
+# Stock Tracker App Project "StockX"
 
-A new Flutter project.
 
-## Getting Started
+Mobile Application Development
 
-This project is a starting point for a Flutter application.
+Project 2
 
-A few resources to get you started if this is your first Flutter project:
+Group: Ramya Morla & Mahendra Krishna Koneru
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+YouTube Presentation Link: 
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Test Account
+
+
+Username: test@gsu.edu
+
+Password (case sensitive): test@123
+
+## Signup page 
+
+User can directly input their mail ID and password after clicking the signup without any additional pages and then click on signup then they will be redirected to login
