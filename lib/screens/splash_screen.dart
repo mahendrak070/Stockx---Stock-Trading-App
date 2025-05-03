@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             SizedBox(height: 20),
             Text(
-              'Welcome to StockWatch',
+              'Welcome to StockX',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 24,

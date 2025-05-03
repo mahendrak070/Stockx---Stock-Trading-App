@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
-import '../widgets/news_card.dart';
+import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../providers/theme_provider.dart';
 import '../services/news_api_service.dart';
 import '../models/news.dart';
-import 'package:url_launcher/url_launcher.dart';
+import '../widgets/news_card.dart';
 
 class FinancialNewsScreen extends StatefulWidget {
+  const FinancialNewsScreen({Key? key}) : super(key: key);
   @override
   _FinancialNewsScreenState createState() => _FinancialNewsScreenState();
 }
 
 class _FinancialNewsScreenState extends State<FinancialNewsScreen> {
-  final NewsApiService _newsService = NewsApiService();
+  final _newsService = NewsApiService();
   List<News>? _news;
   bool _isLoading = true;
 
@@ -21,50 +24,50 @@ class _FinancialNewsScreenState extends State<FinancialNewsScreen> {
   }
 
   Future<void> _loadNews() async {
+    setState(() => _isLoading = true);
     try {
-      final news = await _newsService.fetchFinancialNews();
-      setState(() {
-        _news = news;
-        _isLoading = false;
-      });
+      _news = await _newsService.fetchFinancialNews();
     } catch (e) {
-      setState(() => _isLoading = false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error loading news: $e')),
-      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error loading news: $e')),
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _isLoading = false);
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final themeProv = Provider.of<ThemeProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Financial News'),
+        title: const Text('Financial News'),
         actions: [
-          IconButton(
-            icon: Icon(Icons.refresh),
-            onPressed: _loadNews,
+          IconButton(icon: const Icon(Icons.refresh), onPressed: _loadNews),
+          Switch(
+            value: themeProv.isDarkMode,
+            onChanged: (_) => themeProv.toggleTheme(),
           ),
         ],
       ),
       body: _isLoading
-          ? Center(child: CircularProgressIndicator())
-          : _news == null || _news!.isEmpty
-              ? Center(child: Text('No news available'))
+          ? const Center(child: CircularProgressIndicator())
+          : (_news == null || _news!.isEmpty)
+              ? const Center(child: Text('No news available'))
               : RefreshIndicator(
                   onRefresh: _loadNews,
                   child: ListView.builder(
                     itemCount: _news!.length,
-                    itemBuilder: (context, index) {
-                      final article = _news![index];
+                    itemBuilder: (ctx, i) {
+                      final a = _news![i];
                       return NewsCard(
-                        headline: article.headline,
-                        source: article.source,
-                        snippet: article.snippet,
+                        headline: a.headline,
+                        source: a.source,
+                        snippet: a.snippet,
                         onTap: () async {
-                          if (await canLaunch(article.url)) {
-                            await launch(article.url);
-                          }
+                          if (await canLaunch(a.url)) await launch(a.url);
                         },
                       );
                     },

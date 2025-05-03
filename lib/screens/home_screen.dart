@@ -1,22 +1,32 @@
+// lib/screens/home_screen.dart
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/theme_provider.dart';
 import 'stock_watchlist_screen.dart';
 import 'stock_data_screen.dart';
 import 'financial_news_screen.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final themeProv = Provider.of<ThemeProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('StockX'),
+        title: const Text('StockX'),
         centerTitle: true,
+        actions: [
+          Switch(
+            value: themeProv.isDarkMode,
+            onChanged: (_) => themeProv.toggleTheme(),
+          ),
+        ],
       ),
       body: GridView(
-        padding: EdgeInsets.all(20),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
+        padding: const EdgeInsets.all(20),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2, crossAxisSpacing: 20, mainAxisSpacing: 20,
         ),
         children: [
           HomeButton(
@@ -24,7 +34,7 @@ class HomeScreen extends StatelessWidget {
             icon: Icons.list_alt,
             onTap: () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => StockWatchlistScreen()),
+              MaterialPageRoute(builder: (_) => StockWatchlistScreen()),
             ),
           ),
           HomeButton(
@@ -32,7 +42,7 @@ class HomeScreen extends StatelessWidget {
             icon: Icons.bar_chart,
             onTap: () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => StockDataScreen()),
+              MaterialPageRoute(builder: (_) => StockDataScreen()),
             ),
           ),
           HomeButton(
@@ -40,7 +50,7 @@ class HomeScreen extends StatelessWidget {
             icon: Icons.newspaper,
             onTap: () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => FinancialNewsScreen()),
+              MaterialPageRoute(builder: (_) => FinancialNewsScreen()),
             ),
           ),
         ],
@@ -54,7 +64,12 @@ class HomeButton extends StatelessWidget {
   final IconData icon;
   final VoidCallback onTap;
 
-  HomeButton({required this.title, required this.icon, required this.onTap});
+  const HomeButton({
+    Key? key,
+    required this.title,
+    required this.icon,
+    required this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -63,17 +78,17 @@ class HomeButton extends StatelessWidget {
       child: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: Colors.blue,
+          color: Theme.of(context).primaryColor,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Icon(icon, size: 50, color: Colors.white),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
