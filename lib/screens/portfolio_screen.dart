@@ -175,13 +175,13 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color:
-                                t.total >= 0 ? Colors.green : Colors.red,
+                                t.total >= 0 ? Colors.green : Colors.red, //Added Color Red
                           ),
                         ),
                         isThreeLine: true,
                       );
                     },
-                  ),
+                  ), 
           ),
         ],
       ),
