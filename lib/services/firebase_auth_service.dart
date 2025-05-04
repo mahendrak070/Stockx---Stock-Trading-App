@@ -12,7 +12,7 @@ class FirebaseAuthService {
       return userCredential.user;
     } on FirebaseAuthException catch (e) {
       print('Sign Up Error: ${e.message}');
-      throw e;
+      rethrow;
     }
   }
 
@@ -25,7 +25,7 @@ class FirebaseAuthService {
       return userCredential.user;
     } on FirebaseAuthException catch (e) {
       print('Log In Error: ${e.message}');
-      throw e;
+      rethrow;
     }
   }
 

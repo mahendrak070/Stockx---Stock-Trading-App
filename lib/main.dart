@@ -17,7 +17,7 @@ void main() async {
 }
 
 class StockTrackerApp extends StatelessWidget {
-  const StockTrackerApp({Key? key}) : super(key: key);
+  const StockTrackerApp({super.key});
 
   @override
   Widget build(BuildContext context) {

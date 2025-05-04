@@ -5,9 +5,11 @@ import '../services/stock_api_service.dart';
 import '../models/stock.dart';
 
 class StockWatchlistScreen extends StatefulWidget {
+  const StockWatchlistScreen({super.key});
+
   @override
   _StockWatchlistScreenState createState() => _StockWatchlistScreenState();
-}
+} //added
 
 class _StockWatchlistScreenState extends State<StockWatchlistScreen> {
   final StockApiService _stockService = StockApiService();

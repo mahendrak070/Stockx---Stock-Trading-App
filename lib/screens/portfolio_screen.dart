@@ -21,7 +21,7 @@ class PortfolioTransaction {
 }
 
 class PortfolioScreen extends StatefulWidget {
-  const PortfolioScreen({Key? key}) : super(key: key);
+  const PortfolioScreen({super.key});
 
   @override
   _PortfolioScreenState createState() => _PortfolioScreenState();
@@ -34,7 +34,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
       _transactions.fold(0.0, (sum, tx) => sum + tx.total);
 
   void _showAddDialog() {
-    final _formKey = GlobalKey<FormState>();
+    final formKey = GlobalKey<FormState>();
     final stockCtrl = TextEditingController();
     final sharesCtrl = TextEditingController();
     final priceCtrl = TextEditingController();
@@ -45,7 +45,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
       builder: (_) => AlertDialog(
         title: const Text('Add Transaction'),
         content: Form(
-          key: _formKey,
+          key: formKey,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -101,7 +101,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
               child: const Text('Cancel')),
           ElevatedButton(
             onPressed: () {
-              if (_formKey.currentState!.validate()) {
+              if (formKey.currentState!.validate()) {
                 final tx = PortfolioTransaction(
                   stockName: stockCtrl.text.trim(),
                   shares: int.parse(sharesCtrl.text.trim()),

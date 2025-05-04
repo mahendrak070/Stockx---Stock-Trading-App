@@ -6,7 +6,7 @@ class StockCard extends StatelessWidget {
   final double price;
   final double percentChange;
 
-  const StockCard({
+  const StockCard({super.key, 
     required this.name,
     required this.symbol,
     required this.price,

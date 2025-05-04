@@ -4,7 +4,7 @@ import 'login_screen.dart'; // Import the Login Screen
 class SplashScreen extends StatefulWidget {
   final Function(bool) onThemeChange; // Add this parameter for theme change callback
 
-  SplashScreen({required this.onThemeChange});
+  const SplashScreen({super.key, required this.onThemeChange});
 
   @override
   _SplashScreenState createState() => _SplashScreenState();

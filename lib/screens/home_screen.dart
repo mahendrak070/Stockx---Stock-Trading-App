@@ -9,7 +9,7 @@ import 'stock_data_screen.dart';
 import 'financial_news_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
   @override
   Widget build(BuildContext context) {
     final themeProv = Provider.of<ThemeProvider>(context);
@@ -76,11 +76,11 @@ class HomeButton extends StatelessWidget {
   final VoidCallback onTap;
 
   const HomeButton({
-    Key? key,
+    super.key,
     required this.title,
     required this.icon,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

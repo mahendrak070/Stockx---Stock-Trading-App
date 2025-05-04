@@ -6,6 +6,8 @@ import '../services/stock_api_service.dart';
 import 'dart:math' show min, max;
 
 class StockDataScreen extends StatefulWidget {
+  const StockDataScreen({super.key});
+
   @override
   _StockDataScreenState createState() => _StockDataScreenState();
 }
@@ -32,8 +34,8 @@ class _StockDataScreenState extends State<StockDataScreen> {
     'BOFA',  // Bank of America 
   ];
 
-  Map<String, List<Candle>> _allStockCandles = {};
-  Map<String, Stock> _allStocks = {};
+  final Map<String, List<Candle>> _allStockCandles = {};
+  final Map<String, Stock> _allStocks = {};
 
   @override
   void initState() {
@@ -264,7 +266,7 @@ class _StockDataScreenState extends State<StockDataScreen> {
   Widget _buildPriceChart() {
     print('Building chart with data: ${_candleData?.length} candles');
     if (_candleData == null || _candleData!.isEmpty || _stock == null) {
-      return Container(
+      return SizedBox(
         height: 300,
         child: Center(child: Text('Loading chart data...')),
       );

@@ -6,7 +6,7 @@ class NewsCard extends StatelessWidget {
   final String snippet;
   final VoidCallback onTap;
 
-  NewsCard({
+  const NewsCard({super.key, 
     required this.headline,
     required this.source,
     required this.snippet,

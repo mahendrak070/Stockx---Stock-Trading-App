@@ -7,7 +7,7 @@ import '../models/news.dart';
 import '../widgets/news_card.dart';
 
 class FinancialNewsScreen extends StatefulWidget {
-  const FinancialNewsScreen({Key? key}) : super(key: key);
+  const FinancialNewsScreen({super.key});
   @override
   _FinancialNewsScreenState createState() => _FinancialNewsScreenState();
 }
