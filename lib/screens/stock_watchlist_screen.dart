@@ -123,7 +123,7 @@ class _StockWatchlistScreenState extends State<StockWatchlistScreen> {
                               onPressed: () => Navigator.pop(context),
                               child: Text('Cancel'),
                             ),
-                            TextButton(
+                            TextButton( //
                               onPressed: () {
                                 setState(() {
                                   watchlistSymbols.remove(stock.symbol);

@@ -32,6 +32,7 @@ class _StockDataScreenState extends State<StockDataScreen> {
     'UBER',   // Uber
     'Ebay',  // Ebay
     'BOFA',  // Bank of America 
+    'BRK',
   ];
 
   final Map<String, List<Candle>> _allStockCandles = {};
